@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main>
+    <h1>Login</h1>
+    <form id="login-form">
+      <input type="email" id="email" placeholder="Email" required />
+      <input type="password" id="password" placeholder="Password" required minlength="6" />
+      <button type="submit">Login</button>
+    </form>
+    <p>No account? <a href="signup.html">Sign Up</a></p>
+  </main>
+
+<script>
+  const userInfo = document.getElementById('user-info');
+  const loginLink = document.getElementById('login-link');
+  const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+  if (currentUser) {
+    userInfo.innerHTML = `Welcome, ${currentUser.email} <button onclick="logout()">Logout</button>`;
+    if (loginLink) loginLink.style.display = 'none';
+  } else {
+    userInfo.innerHTML = `<a href="login.html">Login</a>`;
+  }
+
+  function logout() {
+    localStorage.removeItem('currentUser');
+    window.location.reload();
+  }
+</script>
+
+<footer>
+  &copy; 2025 Shopetize Clothing Store. All rights reserved. <br />
+  Website created by <strong>Unathi Monjane</strong>.
+</footer>
+
+</body>
+</html>

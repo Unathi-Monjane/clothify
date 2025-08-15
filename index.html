@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shopetize Clothing Store - Home</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=ZAR" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header>
+  <h1>Shopetize</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="product.html">Products</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="login.html">Login</a>
+    <span>🛒 <span id="cart-count-badge">0</span></span>
+  </nav>
+</header>
+
+
+  <main class="products-container">
+    <h2>Featured Products</h2>
+    <div class="products" aria-live="polite" aria-label="Featured products"></div>
+  </main>
+
+  <section class="cart-section" aria-label="Shopping cart">
+    <h2>Your Cart (<span id="cart-count">0</span> items)</h2>
+    <div id="cart-items"></div>
+    <p id="cart-total">Total: R0</p>
+
+    <div id="paypal-button-container"></div>
+    <div id="payfast-form-container"></div>
+  </section>
+
+  <section class="hire-banner">
+    <p>Want a website like this for your business?</p>
+    <a href="contact.html" class="hire-btn" tabindex="0">Hire Me to Build Your Store</a>
+  </section>
+
+  <footer>
+  &copy; 2025 Shopetize Clothing Store. All rights reserved. <br />
+  Website created by <strong>Unathi Monjane</strong>.
+</footer>
+
+</body>
+</html>

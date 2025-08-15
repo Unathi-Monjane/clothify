@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main>
+    <h1>Sign Up</h1>
+    <form id="signup-form">
+      <input type="email" id="email" placeholder="Email" required />
+      <input type="password" id="password" placeholder="Password" required minlength="6" />
+      <input type="password" id="confirm-password" placeholder="Confirm Password" required minlength="6" />
+      <button type="submit">Sign Up</button>
+    </form>
+    <p>Already have an account? <a href="login.html">Login</a></p>
+  </main>
+
+  <script>
+    const form = document.getElementById('signup-form');
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const email = form.email.value.trim();
+      const password = form.password.value;
+      const confirmPassword = form['confirm-password'].value;
+
+      if (password !== confirmPassword) {
+        alert('Passwords do not match.');
+        return;
+      }
+
+      let users = JSON.parse(localStorage.getItem('users')) || [];
+      if (users.find(u => u.email === email)) {
+        alert('Email already registered.');
+        return;
+      }
+
+      users.push({ email, password });
+      localStorage.setItem('users', JSON.stringify(users));
+      alert('Signup successful! Please login.');
+      window.location.href = 'login.html';
+    });
+  </script>
+
+  <footer>
+  &copy; 2025 Shopetize Clothing Store. All rights reserved. <br />
+  Website created by <strong>Unathi Monjane</strong>.
+</footer>
+
+</body>
+</html>

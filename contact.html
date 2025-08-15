@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact Us - Shopetize Clothing Store</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Shopetize <span id="cart-count-badge">0</span></h1>
+    <nav>
+    <a href="index.html">Home</a>
+    <a href="product.html">Products</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="login.html">Login</a>
+  </nav>
+
+  </header>
+
+  <main class="products-container" style="max-width: 600px; margin: 3rem auto; padding: 0 1.5rem;">
+    <h2>Contact Us</h2>
+    <p>If you’d like to reach out, please fill out the form below or email us directly at <a href="mailto:contact@shopetize.com" style="color:#ff7a59; font-weight:600;">contact@shopetize.com</a>.</p>
+
+    <form id="contact-form" action="#" method="POST" novalidate>
+      <label for="name">Full Name</label><br />
+      <input type="text" id="name" name="name" required placeholder="Your full name" /><br /><br />
+
+      <label for="email">Email Address</label><br />
+      <input type="email" id="email" name="email" required placeholder="you@example.com" /><br /><br />
+
+      <label for="message">Message</label><br />
+      <textarea id="message" name="message" rows="5" required placeholder="Your message here..."></textarea><br /><br />
+
+      <button type="submit">Send Message</button>
+    </form>
+
+    <p id="form-status" style="margin-top:1rem; font-weight: 600;"></p>
+  </main>
+
+  <footer>
+  &copy; 2025 Shopetize Clothing Store. All rights reserved. <br />
+  Website created by <strong>Unathi Monjane</strong>.
+</footer>
+
+  <script>
+    // Simple client-side form feedback (no backend)
+    document.getElementById("contact-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const name = this.name.value.trim();
+      const email = this.email.value.trim();
+      const message = this.message.value.trim();
+      const status = document.getElementById("form-status");
+
+      if (!name || !email || !message) {
+        status.style.color = "red";
+        status.textContent = "Please fill in all fields.";
+        return;
+      }
+
+      // Basic email format check
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        status.style.color = "red";
+        status.textContent = "Please enter a valid email address.";
+        return;
+      }
+
+      // Simulate sending...
+      status.style.color = "#28a745";
+      status.textContent = "Thank you for your message! We'll get back to you soon.";
+
+      // Clear form
+      this.reset();
+    });
+  </script>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

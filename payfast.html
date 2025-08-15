@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PayFast Checkout</title>
+  <style>body{font-family:sans-serif;padding:2rem;text-align:center;}button{font-size:1rem;padding:1rem 2rem;background:#ffa726;color:#fff;border:none;border-radius:8px;cursor:pointer;}</style>
+</head>
+<body>
+  <h1>Redirecting to PayFast...</h1>
+  <form id="payfast-form" action="https://www.payfast.co.za/eng/process" method="post">
+    <input type="hidden" name="merchant_id" value="YOUR_MERCHANT_ID" />
+    <input type="hidden" name="merchant_key" value="YOUR_MERCHANT_KEY" />
+    <input type="hidden" name="return_url" value="https://yourdomain.com/success.html" />
+    <input type="hidden" name="cancel_url" value="https://yourdomain.com/cancel.html" />
+    <input type="hidden" name="notify_url" value="https://yourdomain.com/notify.php" />
+    <input type="hidden" name="amount" id="amount" />
+    <input type="hidden" name="item_name" value="Your Order" />
+  </form>
+  <script>
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const total = cart.reduce((sum, item) => sum + item.price, 0);
+    if(total <= 0) {
+      alert('Your cart is empty! Please add products before checking out.');
+      window.location.href = 'products.html';
+    } else {
+      document.getElementById('amount').value = total.toFixed(2);
+      document.getElementById('payfast-form').submit();
+    }
+  </script>
+
+<footer>
+  &copy; 2025 Shopetize Clothing Store. All rights reserved. <br />
+  Website created by <strong>Unathi Monjane</strong>.
+</footer>
+
+</body>
+</html>
